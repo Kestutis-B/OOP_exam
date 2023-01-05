@@ -1,0 +1,16 @@
+{
+    "name": "kestutisbilotas/phpoopexam",
+    "description": "PHP OOP atsiskaitymas",
+    "autoload": {
+        "psr-4": {
+            "Kestutisbilotas\\Phpoopexam\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Kestutis Bilotas",
+            "email": "KBilotas@gmail.com"
+        }
+    ],
+    "require": {}
+}
