@@ -8,3 +8,4 @@ require_once './vendor/autoload.php';
 
 
 echo 'labas';
+echo '<hr';
