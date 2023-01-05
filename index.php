@@ -8,9 +8,6 @@ require_once './vendor/autoload.php';
 
 
 
-echo 'labas';
-echo '<hr>';
-
 
 ?>
 <!DOCTYPE html>
@@ -37,10 +34,10 @@ echo '<hr>';
         <p>Nurodykite savo duomenis:</p>
         <p>Per mėnesį suvartotų elektros kilovatvalandžių kiekį, tarifą ir dieninį ar naktinį tarifą, mėnesį
             už kurį yra
-            mokama. Darykite tai kaip pavyzdyje:</p>
-        <p class="pvz">2000 0.56 diena 9</p>
+            mokama. Darykite tai kaip pavyzdyje žemiau:</p>
+        <p class="pvz">2022 0.20 diena 12</p>
         <p>arba</p>
-        <p class="pvz">2000 0.56 naktis 9</p>
+        <p class="pvz">2022 0.28 naktis 12</p>
     </form>
 
 </fieldset>
@@ -49,7 +46,7 @@ echo '<hr>';
 
     <fieldset>
 
-        <legend>Įvedėte šiuos duomenis</legend>
+        <legend>Jūsų įvesti duomenys</legend>
 
         <div class="red_text">
             <?php if (isset($exception)) echo $exception->getMessage() ?>
