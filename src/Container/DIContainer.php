@@ -3,6 +3,8 @@
 namespace Kestutisbilotas\Container;
 
 use Kestutisbilotas\Controllers\CalcController;
+use Kestutisbilotas\Models\ValidateData;
+use RuntimeException;
 
 
 class DIContainer
@@ -29,16 +31,17 @@ class DIContainer
         $this->entries[$id] = $callable;
     }
 
-    public function loadDependencies()
-    {
-        $this->set(
-            CalcController::class,
-            function (\Mvcproject\Mvc\Container\DIContainer $container) {
-                return new CalcController(
-                    $container->get(CarRepository::class)
-                );
-            }
-        );
+//    public function loadDependencies()
+//    {
+//        $this->set(
+//            CalcController::class,
+//            function (\Kestutisbilotas\Container\DIContainer $container) {
+//                return new CalcController(
+//                    //kokią klasę?
+//                    $container->get(ValidateData::class)
+//                );
+//            }
+//        );
 
 //        $this->set(
 //            Router::class,
@@ -70,5 +73,5 @@ class DIContainer
 //                return new HomePageController();
 //            }
 //        );
-    }
+//    }
 }

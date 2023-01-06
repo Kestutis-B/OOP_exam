@@ -6,7 +6,14 @@ error_reporting(E_ALL);
 
 require_once './vendor/autoload.php';
 
+use Kestutisbilotas\Framework\Router;
+use Kestutisbilotas\Container\DIContainer;
 
+//patikrinti, kodel nemato cia DIContainer klases
+$container = new DIContainer();
+$router = $container->get(Router::class);
+$request = (isset($_POST['_method'])) ? strtoupper($_POST['_method']) : $_SERVER['REQUEST_METHOD'];
+$router->process($request);
 
 
 ?>
@@ -35,9 +42,9 @@ require_once './vendor/autoload.php';
         <p>Per mėnesį suvartotų elektros kilovatvalandžių kiekį, tarifą ir dieninį ar naktinį tarifą, mėnesį
             už kurį yra
             mokama. Darykite tai kaip pavyzdyje žemiau:</p>
-        <p class="pvz">2022 0.20 diena 12</p>
+        <p class="pvz">300 0.20 diena 12</p>
         <p>arba</p>
-        <p class="pvz">2022 0.28 naktis 12</p>
+        <p class="pvz">300 0.28 naktis 12</p>
     </form>
 
 </fieldset>
