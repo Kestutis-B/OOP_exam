@@ -3,7 +3,9 @@
 namespace Kestutisbilotas\Container;
 
 use Kestutisbilotas\Controllers\CalcController;
+use Kestutisbilotas\Models\CalcAll;
 use Kestutisbilotas\Models\ValidateData;
+use Kestutisbilotas\Framework\Router;
 use RuntimeException;
 
 
@@ -31,47 +33,39 @@ class DIContainer
         $this->entries[$id] = $callable;
     }
 
-//    public function loadDependencies()
-//    {
-//        $this->set(
-//            CalcController::class,
-//            function (\Kestutisbilotas\Container\DIContainer $container) {
-//                return new CalcController(
-//                    //kokią klasę?
-//                    $container->get(ValidateData::class)
-//                );
-//            }
-//        );
+    public function loadDependencies()
+    {
+        $this->set(
+            CalcController::class,
+            function (DIContainer $container) {
+                return new CalcController(
+                    $container->get(CalcAll::class)
+                );
+            }
+        );
 
-//        $this->set(
-//            Router::class,
-//            function (DIContainer $container) {
-//                return new Router(
-//                    $container->get(HomePageController::class),
-//                    $container->get(CarController::class)
-//                );
-//            }
-//        );
-//
-//        $this->set(
-//            Car::class,
-//            function (DIContainer $container) {
-//                return new Car();
-//            }
-//        );
-//
-//        $this->set(
-//            CarRepository::class,
-//            function (DIContainer $container) {
-//                return new CarRepository();
-//            }
-//        );
-//
-//        $this->set(
-//            HomePageController::class,
-//            function (DIContainer $container) {
-//                return new HomePageController();
-//            }
-//        );
-//    }
+        $this->set(
+            Router::class,
+            function (DIContainer $container) {
+                return new Router(
+                    $container->get(CalcController::class),
+
+                );
+            }
+        );
+
+        $this->set(
+            CalcAll::class,
+            function (DIContainer $container) {
+                return new CalcAll();
+            }
+        );
+
+        $this->set(
+            CalcController::class,
+            function (DIContainer $container) {
+                return new CalcController();
+            }
+        );
+    }
 }

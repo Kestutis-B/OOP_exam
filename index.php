@@ -6,8 +6,9 @@ error_reporting(E_ALL);
 
 require_once './vendor/autoload.php';
 
-use Kestutisbilotas\Framework\Router;
 use Kestutisbilotas\Container\DIContainer;
+use Kestutisbilotas\Framework\Router;
+
 
 //patikrinti, kodel nemato cia DIContainer klases
 $container = new DIContainer();

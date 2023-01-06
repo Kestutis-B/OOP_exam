@@ -10,6 +10,7 @@ use Kestutisbilotas\Models\DataFromFile;
 use Kestutisbilotas\Models\DataToFile;
 use Kestutisbilotas\Models\ValidateData;
 use Kestutisbilotas\Models\DeleteEntered;
+use Kestutisbilotas\Models\Pay;
 
 class CalcController implements CalcControllerInterface
 {
@@ -50,5 +51,19 @@ class CalcController implements CalcControllerInterface
         $sums = $count->calc();
         $getData = $this->diContainer->get(DataFromFile::class);
         $data = $getData->fromFile();
+    }
+
+    public function finalPay(): void
+    {
+        $count = $this->diContainer->get(CalcAll::class);
+        $sums = $count->calc();
+        $final = $this->diContainer->get(Pay::class);
+        if (isset($sums) && !empty($sums)){
+            try {
+                $pay = $final->pay();
+            } catch (InputValidationException $exception){
+                $exception->getMessage();
+            }
+        }
     }
 }

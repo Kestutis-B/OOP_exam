@@ -24,9 +24,9 @@ class Router
             $controller->deleteEntered();
         } elseif ($method == 'COUNT'){
             $controller->countAll();
+        } elseif ($method == 'PAY'){
+            $controller->finalPay();
         }
-        // prideti kitus kontrolerius
-
         else {
             $controller->showData();
         }
